@@ -1,0 +1,103 @@
+<% include partials/header %>
+    <header class="row jumbotron">
+        <div class="col-3"></div>
+        <div class="col-6 title_header">
+            <h1>Amit's Workshop</h1>
+        </div>
+        <div class="col-3"></div>
+    </header>
+
+    <div class="container">
+        <div class="home_container row">
+            <div class="col-lg-6 col-md-4 col-sm-4 basket">
+                <div class="thumbnail">
+                    <h3>Amit's basket</h3>
+                    <hr>
+                    <table class="ingredients_table">
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th></th>
+                        </tr>
+                        <% elements.forEach(function(element){ %>
+                            <tr class="ingredients ingredient_<%= element.id %>">
+                                <td>
+                                    <img class="delete_icon" elem-id="<%= element.id %>" src="/delete1.png">
+                                </td>
+                                <td>
+                                    <p class="ingredient_name_<%= element.id %>" elem-name="<%= element.name %>">
+                                        <%= element.name %>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="ingredient_quantity_<%= element.id %>" elem-qty="<%= element.quantity %>">
+                                        <%= element.quantity %>
+                                    </p>
+                                </td>
+                                <td>
+                                    <p class="ingredient_unit_<%= element.id %>" elem-unit="<%= element.unit %>">
+                                        <% if (element.unit.localeCompare("numbers") != 0) { %>
+                                            <%= element.unit %>
+                                                <% } %>
+                                    </p>
+                                </td>
+                                <td>
+                                    <div class="manage_buttons">
+                                        <p class="plus_button" elem-id="<%= element.id %>">
+                                            <a class="btn btn-primary btn-large">+</a>
+                                        </p>
+                                        <p class="minus_button" elem-id="<%= element.id %>">
+                                            <a class="btn btn-primary btn-large">-</a>
+                                        </p>
+                                        <p class="edit_button" elem-id="<%= element.id %>">
+                                            <a class="btn btn-primary btn-large">Edit</a>
+                                        </p>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            <% }) %>
+                    </table>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 ingredients">
+                <div class="thumbnail">
+                    <h3>
+                        <span class="add_update_title">Add</span> an ingredient</h3>
+                    <hr>
+                    <form action="/addElement/add" method="POST">
+                        <input class="ingredient_id" type="hidden" name="ingredient_id" value="<%= elements.length %>">
+                        <div class="form-group row">
+                            <label for="ingredient_name" class="col-2 col-form-label">Ingredient</label>
+                            <div class="col-10">
+                                <input class="form-control" name="ingredient_name" type="text" value="" placeholder="Ingredient" id="ingredient_name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="ingredient_quantity" class="col-2 col-form-label">Quantity</label>
+                            <div class="col-10">
+                                <input class="form-control" name="ingredient_quantity" type="text" value="" placeholder="Quantity" id="ingredient_quantity">
+                            </div>
+                        </div>
+                        <label class="mr-sm-2" for="ingredient_unit">Choose a unit</label>
+                        <select class="ingredient_unit custom-select mb-2 mr-sm-2 mb-sm-0" name="ingredient_unit" id="ingredient_unit">
+                            <option selected>Choose a unit</option>
+                            <option value="numbers">Numbers</option>
+                            <option value="liters">Liters</option>
+                            <option value="kilograms">Kilograms</option>
+                            <option value="milliliters">Milliliters</option>
+                            <option value="grams">Grams</option>
+                            <option value="milligrams">Milligrams</option>
+                        </select>
+                        <div class="form-group row add_update_button">
+                            <button class="btn btn-primary btn-large">
+                                <span class="add_update_title">Add</span> ingredient</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include partials/footer %>

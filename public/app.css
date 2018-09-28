@@ -1,0 +1,36 @@
+.title_header{
+    text-align: center;
+}
+body p{
+    margin-bottom: 0 !important;
+}
+.basket_ingredients_container{
+    display: block;
+}
+.basket_button{
+    color: white !important;
+}
+.manage_buttons{
+    display: block;
+}
+.manage_buttons .plus_button, .manage_buttons .minus_button, .manage_buttons .edit_button{
+    display: inline-block;
+    color: white !important;
+}
+.basket_ingredients_container .basket, .basket_ingredients_container .ingredients, .basket_ingredients_container .b_i_separator{
+    display: inline-block;
+}
+.ingredients_table{
+    width: 100%;
+}
+.delete_icon{
+    width: 30px;
+}
+.add_update_button{
+    padding: 10px;
+}
+.add_update_button button{
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+}
