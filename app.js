@@ -14,9 +14,9 @@ var ingredientModel = new mongoose.Schema({
     quantity: Number,
     unit: String
 });
-
 var Ingredient = mongoose.model("Ingredient", ingredientModel);
 
+var recipe_file_index = 0;
 app.get("/", function (request, response) {
     //Displaying ingredients stored in DB
     Ingredient.find({}, function (error, ingredient) {
@@ -26,6 +26,45 @@ app.get("/", function (request, response) {
             response.render("index", { elements: ingredient });
     });
 });
+app.get("/recipes", function (request, response) {
+    response.render("recipes");
+});
+app.get("/recipes/:ele", function (request, response) {
+    if (request.query.recipe) {
+        if (recipe_file_index == request.query.recipes.length)
+            recipe_file_index = 0;
+        var recipe_ingredients = request.query.recipe.ingredients;
+        var obj = Object.keys(recipe_ingredients);
+        var obj_len = obj.length;
+        var available_ingredients = [];
+        var recipe_file;
+        var recipe_name;
+        Ingredient.find({}, function (error, ingredients) {
+            if (error)
+                console.log(error);
+            else {
+                ingredients.forEach(function (name) {
+                    obj.forEach(function (ingredient_name) {
+                        if (ingredient_name.localeCompare(name.name) == 0)
+                            available_ingredients.push(ingredient_name);
+                    });
+                });
+                if (obj.length == available_ingredients.length) {
+                    request.query.recipe["recipe_file"] = request.query.recipes[recipe_file_index++];                    
+                    recipe_file = request.query.file_name;
+                    recipe_name = request.query.recipe.name;
+                    response.send({
+                        ingredients: available_ingredients,
+                        recipe_name: recipe_name,
+                        recipe_file: recipe_file
+                    });
+                    console.log("You have the ingredients to make " + request.query.recipe.name + "!");
+                }
+            }
+        });
+    }
+});
+
 //Update && add in one function
 app.post("/addElement/:manage", function (request, response) {
     var id = request.body.ingredient_id;
