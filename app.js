@@ -58,7 +58,6 @@ app.get("/recipes/:ele", function (request, response) {
                 });
                 if (obj.length == available_ingredients.length) {
                     request.query.recipe["recipe_file"] = request.query.recipes[recipe_file_index++];
-                    console.log(available_ingredients[0].i_name);
                     response.send({
                         ingredients: available_ingredients,
                         recipe_name: request.query.recipe.name,
