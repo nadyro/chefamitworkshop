@@ -1,0 +1,12 @@
+{
+    "name": "Salade tomate oignon",
+    "preparationTime": 5,
+    "cookingTime": 0,
+    "ingredients": {
+        "lettuce": 1,
+        "tomatoes": 3,
+        "eggs": 1,
+        "vinegar": true,
+        "olive oil": true
+    }
+}

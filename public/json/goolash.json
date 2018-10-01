@@ -1,0 +1,13 @@
+{
+    "name": "Aunt Anna's Sunday Goulash",
+    "preparationTime": 20,
+    "cookingTime": 155,
+    "ingredients": {
+        "onions": 3,
+        "beefsteak": 1,
+        "garlic": 3,
+        "red pepper": 2,
+        "tomates": 4,
+        "paprika": true
+    }
+}

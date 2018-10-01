@@ -1,0 +1,12 @@
+{
+    "name": "Best Big, Fat, Chewy Chocolate Chip Cookie",
+    "preparationTime": 10,
+    "cookingTime": 15,
+    "ingredients": {
+        "eggs": 2,
+        "chocolate": 2,
+        "flour": true,
+        "brown sugar": true,
+        "butter": true
+    }
+}

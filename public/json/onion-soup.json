@@ -1,0 +1,14 @@
+{
+    "name": "The Best Onion Soup",
+    "preparationTime": 30,
+    "cookingTime": 240,
+    "ingredients": {
+        "onions": 5,
+        "garlic": 2,
+        "thyme": 1,
+        "slice of bread": 8,
+        "emmental": 1,
+        "mozzarella": 1,
+        "butter": true
+    }
+}
